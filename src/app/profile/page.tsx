@@ -179,8 +179,9 @@ export default function ProfilePage() {
         setFormData(data);
         // update localStorage
         try {
-          const existing = (typeof window !== "undefined" && localStorage.getItem("user")) ? JSON.parse(localStorage.getItem("user")) : {};
-          const merged = { ...existing, ...data, role, authId: authUser.id };
+          const stored = (typeof window !== "undefined") ? localStorage.getItem("user") : null;
+          const existing = stored ? JSON.parse(stored) : {};
+          const merged = { ...existing, ...data, role, authId: authUser?.id };
           if (typeof window !== "undefined") localStorage.setItem("user", JSON.stringify(merged));
         } catch (e) { /* ignore */ }
 
