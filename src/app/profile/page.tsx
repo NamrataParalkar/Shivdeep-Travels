@@ -29,7 +29,7 @@ export default function ProfilePage() {
       setLoading(true);
       try {
         // 1) get authenticated user via supabase.auth.getUser()
-        let user = null;
+        let user: User | any = null;
         try {
           const { data } = await supabase.auth.getUser();
           user = data?.user ?? null;
@@ -46,7 +46,7 @@ export default function ProfilePage() {
               const obj = JSON.parse(stored);
               // prefer authId => try to create a lightweight auth-like object
               if (obj.authId || obj.id || obj.auth_id) {
-                user = { id: obj.authId || obj.id || obj.auth_id, email: obj.email ?? null };
+                user = { id: obj.authId || obj.id || obj.auth_id, email: obj.email ?? null } as any;
               }
               // if obj contains role, keep it for role hint
               if (obj.role) setRole(obj.role);
