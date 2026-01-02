@@ -116,8 +116,15 @@ export default function ProfilePage() {
           
           // update saved localStorage user so later pages have quick access
           try {
-            const existing = (typeof window !== "undefined" && localStorage.getItem("user")) ? JSON.parse(localStorage.getItem("user")) : {};
-            const merged = { ...existing, role: detectedRole, authId, email: user.email, ...profileRow };
+            const stored = (typeof window !== "undefined") ? localStorage.getItem("user") : null;
+            const existing = stored ? JSON.parse(stored) : {};
+            const merged = {
+              ...existing,
+              ...(detectedRole ? { role: detectedRole } : {}),
+              authId,
+              email: (user as any).email,
+              ...profileRow,
+            };
             if (typeof window !== "undefined") localStorage.setItem("user", JSON.stringify(merged));
           } catch (e) {
             // ignore localStorage write errors
