@@ -15,16 +15,16 @@ import {
   MessageSquare,
 } from "lucide-react";
 
-//  Define routes properly - all routes point to existing pages
+//  Define routes properly - all routes point to existing student/user pages (NOT admin)
 const items = [
   { key: "home", label: "Home", icon: Home, href: "/" },
   { key: "track", label: "Track Bus", icon: MapPin, href: "/bus_routes" },
-  { key: "drivers", label: "Driver Details", icon: User, href: "/admin/drivers" },
+  { key: "drivers", label: "Driver Details", icon: User, href: "/drivers" },
   { key: "payments", label: "Payments", icon: CreditCard, href: "/payments" },
   { key: "notifications", label: "Notifications", icon: Bell, href: "/notifications" },
   { key: "routes", label: "Bus Routes", icon: Map, href: "/bus_routes" },
   { key: "facilities", label: "Facilities", icon: Building2, href: "/facilities" },
-  { key: "complaints", label: "Complaints & Feedback", icon: MessageSquare, href: "/admin/feedback" },
+  { key: "complaints", label: "Complaints & Feedback", icon: MessageSquare, href: "/complaints" },
   { key: "contact", label: "Contact Info", icon: Phone, href: "/contact-info" },
   { key: "bookings", label: "Other Bookings", icon: FileText, href: "/bookings" },
 ];

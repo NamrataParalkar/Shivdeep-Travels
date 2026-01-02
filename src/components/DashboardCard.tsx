@@ -5,7 +5,7 @@ import { MapPin, User, CreditCard, Bell, Map } from "lucide-react";
 
 const cards = [
   { title: "Track Bus", text: "Live location of your child's bus.", icon: MapPin, href: "/bus_routes" },
-  { title: "Driver Details", text: "View driver profile & emergency contact.", icon: User, href: "/admin/drivers" },
+  { title: "Driver Details", text: "View driver profile & emergency contact.", icon: User, href: "/drivers" },
   { title: "Payments", text: "View fee history & pay online.", icon: CreditCard, href: "/payments" },
   { title: "Notifications", text: "Get real-time alerts & updates.", icon: Bell, href: "/notifications" },
   { title: "Bus Routes", text: "View routes & stop timings.", icon: Map, href: "/bus_routes" },
