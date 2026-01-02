@@ -12,7 +12,7 @@ export default function ProfilePage() {
   
 
   const [authUser, setAuthUser] = useState<User | null>(null); // Supabase auth user
-  const [role, setRole] = useState(null); // "student" | "driver" | "admin"
+  const [role, setRole] = useState<"student" | "driver" | "admin" | null>(null); // "student" | "driver" | "admin"
   const [profile, setProfile] = useState(null); // DB row
   const [formData, setFormData] = useState({});
 
