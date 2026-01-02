@@ -16,16 +16,22 @@ export default function DriversPage() {
     setLoading(true);
     setErrorMsg("");
     try {
+      console.log("Fetching drivers...");
       const { data, error } = await getDrivers();
+      console.log("Drivers response:", { data, error });
       if (error) {
-        console.error("Error loading drivers:", error.message || error);
-        setErrorMsg("Failed to load drivers. Please try again later.");
+        console.error("Error loading drivers:", error);
+        setErrorMsg(`Failed to load drivers: ${error.message || JSON.stringify(error)}`);
       } else if (data) {
+        console.log(`Successfully loaded ${data.length} drivers`);
         setDrivers(data);
+      } else {
+        console.warn("No data returned from getDrivers");
+        setErrorMsg("No driver data returned");
       }
     } catch (err) {
-      console.error(err);
-      setErrorMsg("An unexpected error occurred.");
+      console.error("Unexpected error loading drivers:", err);
+      setErrorMsg(`An unexpected error occurred: ${String(err)}`);
     } finally {
       setLoading(false);
     }

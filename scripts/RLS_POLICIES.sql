@@ -149,19 +149,17 @@ CREATE POLICY "prod_students_admin_manage"
 
 -- ==================================================================
 -- Table: public.drivers
--- Similar pattern as students
+-- Authenticated users (students) can view all drivers; drivers can update their own record; admins have full access
 -- ==================================================================
+DROP POLICY IF EXISTS "prod_drivers_select_authenticated" ON public.drivers;
 DROP POLICY IF EXISTS "prod_drivers_select_own_or_admin" ON public.drivers;
 DROP POLICY IF EXISTS "prod_drivers_update_own_no_ownership_change" ON public.drivers;
 DROP POLICY IF EXISTS "prod_drivers_admin_manage" ON public.drivers;
 
-CREATE POLICY "prod_drivers_select_own_or_admin"
+CREATE POLICY "prod_drivers_select_authenticated"
   ON public.drivers
   FOR SELECT
-  USING (
-    auth.uid()::text = COALESCE(auth_id::text, id::text)
-    OR EXISTS (SELECT 1 FROM public.admins WHERE admins.auth_id = auth.uid())
-  );
+  USING (auth.role() = 'authenticated');
 
 CREATE POLICY "prod_drivers_update_own_no_ownership_change"
   ON public.drivers
