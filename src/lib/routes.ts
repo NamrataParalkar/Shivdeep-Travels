@@ -66,7 +66,7 @@ export async function getActiveRoutes() {
 
     if (routesError) return { data: undefined, error: routesError };
     const routes = (routesData || []) as Route[];
-    if (routes.length === 0) return { data: routes as Route[] };
+    if (routes.length === 0) return { data: [] as RouteWithStops[] };
 
     const ids = routes.map((r) => r.id);
     const { data: stopsData, error: stopsError } = await supabase
