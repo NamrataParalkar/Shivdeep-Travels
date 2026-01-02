@@ -1,5 +1,5 @@
 ﻿"use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
@@ -11,7 +11,7 @@ declare global {
   }
 }
 
-export default function PaymentCheckoutPage() {
+function PaymentCheckoutContent() {
   const router = useRouter();
   const params = useSearchParams();
   const paymentIdParam = params.get("paymentId");
@@ -178,5 +178,13 @@ export default function PaymentCheckoutPage() {
 
       <script src="https://checkout.razorpay.com/v1/checkout.js" async />
     </div>
+  );
+}
+
+export default function PaymentCheckoutPage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
+      <PaymentCheckoutContent />
+    </Suspense>
   );
 }
