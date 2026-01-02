@@ -1,0 +1,13 @@
+/* ✅ Kill any unwanted opacity changes from Swiper */
+.swiper-slide {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: none !important;
+}
+
+.swiper-slide-active,
+.swiper-slide-next,
+.swiper-slide-prev {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
