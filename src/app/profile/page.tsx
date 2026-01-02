@@ -27,18 +27,14 @@ export default function ProfilePage() {
     (async () => {
       setLoading(true);
       try {
-        // 1) try supabase.auth.getUser() (v2) with fallback to older API
+        // 1) get authenticated user via supabase.auth.getUser()
         let user = null;
         try {
-          const maybe = await supabase.auth.getUser();
-          user = maybe?.data?.user ?? null;
+          const { data } = await supabase.auth.getUser();
+          user = data?.user ?? null;
         } catch (err) {
-          console.warn("supabase.auth.getUser() failed, trying legacy supabase.auth.user()", err);
-          if (typeof supabase.auth.user === "function") {
-            user = supabase.auth.user();
-          } else {
-            user = null;
-          }
+          console.warn("supabase.auth.getUser() failed", err);
+          user = null;
         }
 
         // 2) fallback: localStorage (only client)
