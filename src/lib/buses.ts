@@ -50,14 +50,14 @@ export async function getDriversForAssignment() {
 export async function createBus(payload: {
   bus_number: string;
   capacity: number;
-  driver_id?: string;
+  driver_id?: number | null;
   status?: "active" | "maintenance" | "inactive";
 }) {
   try {
     const insertPayload = {
       bus_number: payload.bus_number,
       capacity: payload.capacity,
-      driver_id: payload.driver_id || null,
+      driver_id: payload.driver_id ?? null,
       status: payload.status || "active",
     };
 
