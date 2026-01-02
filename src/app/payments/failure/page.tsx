@@ -1,10 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { AlertCircle, ArrowLeft, RotateCcw } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 
-export default function PaymentFailurePage() {
+function PaymentFailureContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [orderId, setOrderId] = useState("");
@@ -120,5 +120,13 @@ export default function PaymentFailurePage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function PaymentFailurePage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
+      <PaymentFailureContent />
+    </Suspense>
   );
 }
