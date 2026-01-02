@@ -12,10 +12,10 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold text-gray-800">Quick Links</h4>
           <ul className="mt-2 text-sm text-gray-600 space-y-1">
-            <li><a href="#dashboard">Dashboard</a></li>
-            <li><a href="#track">Track Bus</a></li>
-            <li><a href="#contact">Contact Info</a></li>
-            <li><a href="#bookings">Other Bookings</a></li>
+            <li><a href="/" className="hover:text-purple-600">Dashboard</a></li>
+            <li><a href="/bus_routes" className="hover:text-purple-600">Track Bus</a></li>
+            <li><a href="/contact-info" className="hover:text-purple-600">Contact Info</a></li>
+            <li><a href="/bookings" className="hover:text-purple-600">Other Bookings</a></li>
           </ul>
         </div>
 
