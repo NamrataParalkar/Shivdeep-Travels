@@ -140,13 +140,13 @@ export default function ProfilePage() {
   }, []);
 
   // small helper for display labels
-  const label = (k) => String(k).replace(/_/g, " ").replace(/\b\w/g, (s) => s.toUpperCase());
+  const label = (k: string | number) => String(k).replace(/_/g, " ").replace(/\b\w/g, (s) => s.toUpperCase());
 
   // handle input change
-  function handleChange(e) {
-    const name = e.target.name;
-    const value = e.target.value;
-    setFormData((p) => ({ ...p, [name]: value }));
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
+    const name = (e.target as HTMLInputElement).name;
+    const value = (e.target as HTMLInputElement).value;
+    setFormData((p: any) => ({ ...p, [name]: value }));
   }
 
   // Save updates to DB
