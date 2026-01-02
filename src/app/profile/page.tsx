@@ -13,8 +13,8 @@ export default function ProfilePage() {
 
   const [authUser, setAuthUser] = useState<User | null>(null); // Supabase auth user
   const [role, setRole] = useState<"student" | "driver" | "admin" | null>(null); // "student" | "driver" | "admin"
-  const [profile, setProfile] = useState(null); // DB row
-  const [formData, setFormData] = useState({});
+  const [profile, setProfile] = useState<any>(null); // DB row
+  const [formData, setFormData] = useState<Record<string, any>>({});
 
   // mapping for ordered fields (nice layout)
   const fieldsByRole = {
