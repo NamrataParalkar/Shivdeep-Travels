@@ -141,6 +141,7 @@ export default function AdminPayments() {
       await setRouteFee({
         route_id: parseInt(feeData.route_id),
         monthly_amount: parseFloat(feeData.monthly_amount),
+        effective_from: new Date().toISOString().split("T")[0],
       });
       setShowFeeModal(false);
       setFeeData({ route_id: "", monthly_amount: "" });
