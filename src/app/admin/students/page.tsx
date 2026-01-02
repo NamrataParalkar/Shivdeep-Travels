@@ -94,7 +94,8 @@ export default function ManageStudentsPage() {
         } catch (e) {
           console.error("Error loading enrollments:", error);
         }
-        setErrorMsg(error.message || (error.raw ? JSON.stringify(error.raw) : JSON.stringify(error)));
+        const e = error as any;
+        setErrorMsg(e?.message || (e?.raw ? JSON.stringify(e.raw) : JSON.stringify(e)));
       } else if (data) {
         setEnrollments(data);
       }
