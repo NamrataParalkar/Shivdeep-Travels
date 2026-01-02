@@ -15,16 +15,16 @@ import {
   MessageSquare,
 } from "lucide-react";
 
-//  Define routes properly
+//  Define routes properly - all routes point to existing pages
 const items = [
-  { key: "dashboard", label: "Dashboard", icon: Home, href: "/dashboard" },
-  { key: "track", label: "Track Bus", icon: MapPin, href: "/track" },
-  { key: "drivers", label: "Driver Details", icon: User, href: "/drivers" },
+  { key: "home", label: "Home", icon: Home, href: "/" },
+  { key: "track", label: "Track Bus", icon: MapPin, href: "/bus_routes" },
+  { key: "drivers", label: "Driver Details", icon: User, href: "/admin/drivers" },
   { key: "payments", label: "Payments", icon: CreditCard, href: "/payments" },
   { key: "notifications", label: "Notifications", icon: Bell, href: "/notifications" },
   { key: "routes", label: "Bus Routes", icon: Map, href: "/bus_routes" },
   { key: "facilities", label: "Facilities", icon: Building2, href: "/facilities" },
-  { key: "complaints", label: "Complaints & Feedback", icon: MessageSquare, href: "/complaints" },
+  { key: "complaints", label: "Complaints & Feedback", icon: MessageSquare, href: "/admin/feedback" },
   { key: "contact", label: "Contact Info", icon: Phone, href: "/contact-info" },
   { key: "bookings", label: "Other Bookings", icon: FileText, href: "/bookings" },
 ];
@@ -36,7 +36,7 @@ export default function Sidebar({
   collapsed: boolean;
   setCollapsed: (v: boolean) => void;
 }) {
-  const [active, setActive] = useState("dashboard");
+  const [active, setActive] = useState("home");
 
   return (
     <aside
