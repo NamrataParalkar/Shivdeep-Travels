@@ -251,7 +251,7 @@ export default function ProfilePage() {
   const fields = fieldsByRole[role] || Object.keys(profile).filter(k => !["id","auth_id","created_at","password_hash"].includes(k));
 
   // avatar initials
-  const initials = (profile.full_name || authUser.email || "U").split(" ").map(s => s[0]).slice(0,2).join("").toUpperCase();
+  const initials = (profile.full_name || authUser?.email || "U").split(" ").map((s: string) => s[0]).slice(0,2).join("").toUpperCase();
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-white px-4 py-8">
