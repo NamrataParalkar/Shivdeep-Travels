@@ -25,7 +25,7 @@ const emptyDriver = {
 };
 
 export default function RegisterPage() {
-  const [role, setRole] = useState<"student">("student");
+  const [role, setRole] = useState<"student" | "driver">("student");
   const [formData, setFormData] = useState<any>(emptyStudent);
   const [errors, setErrors] = useState<any>({});
   const [showPassword, setShowPassword] = useState(false);
