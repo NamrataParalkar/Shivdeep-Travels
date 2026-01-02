@@ -132,7 +132,7 @@ export default function ManageRoutes() {
   const closeModal = () => {
     setShowModal(false);
     setEditingId(null);
-    setFormData({ route_name: "", start_point: "", end_point: "", is_active: true });
+    setFormData({ route_name: "", start_point: "", end_point: "", is_active: true, stops: [] });
     setFormErrors({});
   };
 
