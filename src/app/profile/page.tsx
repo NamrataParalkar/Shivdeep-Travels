@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient"; // <- make sure this path is correct
+import { User } from "@supabase/supabase-js";
 // lucide-react icons not needed here
 import Link from "next/link";
 
@@ -10,7 +11,7 @@ export default function ProfilePage() {
   const [editMode, setEditMode] = useState(false);
   
 
-  const [authUser, setAuthUser] = useState(null); // Supabase auth user
+  const [authUser, setAuthUser] = useState<User | null>(null); // Supabase auth user
   const [role, setRole] = useState(null); // "student" | "driver" | "admin"
   const [profile, setProfile] = useState(null); // DB row
   const [formData, setFormData] = useState({});
